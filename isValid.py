@@ -21,8 +21,18 @@ class Solution:
         else:
             return False
 
+    def isvalid1(self, s):
+        dic = {'(': ')', '[': ']', '{': '}', '?': '?'}
+        stack = ['?']
+        for c in s:
+            if c in dic:
+                stack.append(c)
+            elif dic[stack.pop()] != c:
+                return False
+        return len(stack) == 1
+
 
 if __name__ == '__main__':
     a = Solution()
     ks = input("请输入一段括号字符：")
-    print(a.isvalid(ks))
+    print(a.isvalid1(ks))
